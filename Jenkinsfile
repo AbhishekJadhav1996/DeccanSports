@@ -8,8 +8,8 @@ agent {
 label 'abhishek_node'
  }
  tools {
-maven "Maven-linux"
-jdk "Jdk"
+maven "Maven"
+jdk "JDK11"
 //         git "Linux-Git"
 }
  stages {
