@@ -48,14 +48,16 @@ echo "Test"
 
 
 
-//         stage('Sonar Analysis') {
-//             steps {
-//                 // use the SonarQube Scanner to analyze the project
+stage('Sonar Analysis') {
+ steps {
+ // use the SonarQube Scanner to analyze the project
 //                 withSonarQubeEnv('SONAR-SCANNER') {
 //                     sh 'mvn sonar:sonar'
+ sh 'mvn clean install'
+ sh 'mvn sonar:sonar -Dsonar.token=02b54d410de9a64cebbe1b06dda1f20b392e8d45'
 //                 }
-//             }
-//         }
+ }
+ }
 
 
 
