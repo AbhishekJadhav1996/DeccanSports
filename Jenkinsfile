@@ -80,7 +80,7 @@ sh "mvn clean install"
  stage('Docker Build') {
 steps {
 script {
-docker.build("docker-soham/sportsclub:${TAG}")
+docker.build("docker-abhishek/sportsclub:${TAG}")
 }
 }
  }
@@ -88,17 +88,17 @@ docker.build("docker-soham/sportsclub:${TAG}")
  steps {
 script {
 docker.withRegistry('http://172.27.59.80:8082/', 'artifactory-docker') {
- docker.image("docker-soham/sportsclub:${TAG}").push()
-docker.image("docker-soham/sportsclub:${TAG}").push("latest")
+ docker.image("docker-abhishek/sportsclub:${TAG}").push()
+docker.image("docker-abhishek/sportsclub:${TAG}").push("latest")
  }
 }
 }
 }
 stage('Deploy'){
 steps {
- sh "docker stop sportsclub-soham | true"
-sh "docker rm sportsclub-soham | true"
- sh "docker run --network springboot-mysql-net --name sportsclub-soham -p 8083:8080 -d docker-soham/sportsclub:${TAG}"
+ sh "docker stop sportsclub-abhishek | true"
+sh "docker rm sportsclub-abhishek | true"
+ sh "docker run --network abhishek-springboot --name sportsclub-abhishek -p 8089:8080 -d docker-abhishek/sportsclub:${TAG}"
 }
 }
 
