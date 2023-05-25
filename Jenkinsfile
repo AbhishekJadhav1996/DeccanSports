@@ -54,7 +54,7 @@ stage('Sonar Analysis') {
 //                 withSonarQubeEnv('SONAR-SCANNER') {
 //                     sh 'mvn sonar:sonar'
  sh 'mvn clean install'
- sh 'mvn sonar:sonar -Dsonar.token=840879d4a4e79585bdadcb3a2d758b6bdf37ac7d'
+ sh 'mvn sonar:sonar -Dsonar.token=af3b59537694ad9f2ebec5be3b257e82268e0c6d'
 //                 }
  }
  }
