@@ -88,7 +88,7 @@ pipeline {
                 branch 'release'
             }
              steps {
-                    sh "docker run --network abhishek-springboot --name sportsclub-abhishek -p 8089:8080 -d docker-abhishek/sportsclub:${TAG}"}"
+                    sh "docker run --network abhishek-springboot --name sportsclub-abhishek -p 8089:8080 -d docker-abhishek/sportsclub:${TAG}}"
                     sh "docker compose down"
                     sh "docker compose up -d"
                  }
