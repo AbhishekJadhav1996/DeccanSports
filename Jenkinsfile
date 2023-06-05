@@ -5,7 +5,7 @@ pipeline {
         TAG = "${DATE}.${BUILD_NUMBER}"
         }
     agent {
-        label 'abhishek-node'
+        label 'abhishek_node'
     }
     tools {
         maven "Maven"
