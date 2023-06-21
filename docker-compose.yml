@@ -1,0 +1,37 @@
+version: "2"
+services:
+  mysqldb:
+    #container_name: mysql_soham_cont
+    image: mysql
+    ports:
+      - 3308:3306
+    environment:
+      MYSQL_DATABASE: club
+      MYSQL_ROOT_PASSWORD: Cybage@123
+    networks:
+      - abhishek-springboot
+
+  angular-app:
+    image: abhishek-frontend
+    ports:
+      - 8085:80
+    # depends_on:
+    #   - mysqldb
+    networks:
+      - abhishek-springboot
+
+
+  springboot-app:
+    image: sports-club-abhishek
+    #build: . 
+    ports: 
+      - 8089:8080
+    depends_on:
+      - mysqldb
+    restart: always
+    networks:
+      - abhishek-springboot
+
+networks:
+  abhishek-springboot:
+    driver: bridge
