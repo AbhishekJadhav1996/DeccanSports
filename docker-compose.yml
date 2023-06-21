@@ -8,6 +8,8 @@ services:
     environment:
       MYSQL_DATABASE: club
       MYSQL_ROOT_PASSWORD: Cybage@123
+      volumes:
+      - abhishek_db:/var/lib/mysql
     networks:
       - abhishek-springboot
 
@@ -35,3 +37,6 @@ services:
 networks:
   abhishek-springboot:
     driver: bridge
+    
+volumes:
+   abhishek_db:
