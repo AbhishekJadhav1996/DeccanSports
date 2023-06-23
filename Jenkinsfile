@@ -5,7 +5,7 @@ pipeline {
         TAG = "${DATE}.${BUILD_NUMBER}"
         }
     agent {
-        label 'abhishek_node'
+        label 'Abhishek_Staging_Node'
     }
     tools {
         maven "Maven"
@@ -15,21 +15,21 @@ pipeline {
         stage('validate'){
             steps{
                 echo "VALIDATE"
-                sh "mvn clean validate"
+                bat "mvn clean validate"
             }
         }
 
         stage('compile'){
             steps{
                 echo "COMPILE"
-                sh "mvn clean compile"
+                bat "mvn clean compile"
             }
         }
 
         stage('test'){
             steps{
                 echo "Test"
-                sh "mvn clean test"
+                bat "mvn clean test"
             }
         }
         stage('Sonar Analysis') {
@@ -37,8 +37,8 @@ pipeline {
             // use the SonarQube Scanner to analyze the project
             //                 withSonarQubeEnv('SONAR-SCANNER') {
             //                     sh 'mvn sonar:sonar'
-            sh 'mvn clean install'
-            sh 'mvn sonar:sonar -Dsonar.token=af3b59537694ad9f2ebec5be3b257e82268e0c6d'
+            bat 'mvn clean install'
+            bat 'mvn sonar:sonar -Dsonar.token=af3b59537694ad9f2ebec5be3b257e82268e0c6d'
             //                 }
             }
         }
@@ -46,7 +46,7 @@ pipeline {
         stage('package'){
             steps{
                 echo 'Pakage'
-                sh 'mvn clean package'   
+                bat 'mvn clean package'   
             }
         }
 
@@ -54,7 +54,7 @@ pipeline {
         stage('install'){
             steps{
                 echo "Install"
-             sh "mvn clean install"
+             bat "mvn clean install"
             }
         }
  
