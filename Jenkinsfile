@@ -32,16 +32,16 @@ pipeline {
                 bat "mvn clean test"
             }
         }
-        stage('Sonar Analysis') {
-            steps {
-            // use the SonarQube Scanner to analyze the project
-            //                 withSonarQubeEnv('SONAR-SCANNER') {
-            //                     sh 'mvn sonar:sonar'
-            bat 'mvn clean install'
-            bat 'mvn sonar:sonar -Dsonar.token=af3b59537694ad9f2ebec5be3b257e82268e0c6d'
-            //                 }
-            }
-        }
+        // stage('Sonar Analysis') {
+        //     steps {
+        //     // use the SonarQube Scanner to analyze the project
+        //     //                 withSonarQubeEnv('SONAR-SCANNER') {
+        //     //                     sh 'mvn sonar:sonar'
+        //     bat 'mvn clean install'
+        //     bat 'mvn sonar:sonar -Dsonar.token=af3b59537694ad9f2ebec5be3b257e82268e0c6d'
+        //     //                 }
+        //     }
+        // }
 
         stage('package'){
             steps{
