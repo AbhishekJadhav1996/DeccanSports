@@ -40,6 +40,7 @@ pipeline {
             // bat 'mvn sonar:sonar -Dsonar.token=af3b59537694ad9f2ebec5be3b257e82268e0c6d'
             }
         }
+        }
 
         stage('package'){
             steps{
