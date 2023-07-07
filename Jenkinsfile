@@ -34,8 +34,8 @@ pipeline {
         }
         stage('Sonar Analysis') {
             steps {
-                             withSonarQubeEnv('SonarQube') {
-                                 bat 'mvn sonar:sonar'
+        withSonarQubeEnv('SonarQube') {
+        bat 'mvn sonar:sonar'
             bat 'mvn clean install'
             // bat 'mvn sonar:sonar -Dsonar.token=af3b59537694ad9f2ebec5be3b257e82268e0c6d'
             }
