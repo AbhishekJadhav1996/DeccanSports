@@ -9,7 +9,7 @@ pipeline {
         stage('validate') {
             steps {
                 echo 'VALIDATE'
-                sh 'mvn clean validate'
+                bat 'mvn clean validate'
             }
         }
         stage('Compile') {
