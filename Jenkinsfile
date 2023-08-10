@@ -2,7 +2,7 @@ pipeline {
     agent 'any'
     tools {
             maven 'Maven'
-            jdk 'JDK11'
+            jdk 'JDK17'
     }
 
     stages {
@@ -34,53 +34,3 @@ pipeline {
         // }
 
         stage('package') {
-            steps {
-                echo 'Pakage'
-                sh 'mvn clean package'
-            }
-        }
-        stage('Docker Build') {
-            // when {
-            //     branch 'release'
-            // }
-            // stage('Build') {
-                steps {
-                    sh 'docker build -t abhi_patil/sportclub-backend:latest .'
-                }
-            // steps {
-            //     script {
-            //        sh docker.build("abhi_docker/sportsclub:latest")
-            //     }
-            // }
-        }
-        stage('scan') {
-            steps { 
-                sh 'trivy image abhi_patil/sportclub-backend:latest'
-            }
-        }
-       
-
-
-        // stage('Pushing Docker Image to Jfrog Artifactory') {
-        //     when {
-        //         branch 'release'
-        //     }
-        //     steps {
-        //         script {
-        //             docker.withRegistry('http://172.27.59.80:8082/', 'artifactory-docker') {
-        //                 docker.image("abhi_docker/sportsclub:${TAG}").push()
-        //                 docker.image("abhi_docker/sportsclub:${TAG}").push('latest')
-        //             }
-        //         }
-        //     }
-        // }
-        // stage('Deploy'){
-        //     when {
-        //         branch 'release'
-        //     }
-        //     steps {
-        //         sh 'docker-compose up'
-        //     }
-        // }
-    }
-}
