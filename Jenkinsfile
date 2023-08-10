@@ -1,12 +1,5 @@
-/* groovylint-disable CompileStatic, DuplicateStringLiteral, LineLength, NestedBlockDepth, NglParseError */
 pipeline {
-    // environment {
-    //     DATE = new Date().format('yy.M')
-    //     TAG = "${DATE}.${BUILD_NUMBER}"
-    // }
-    agent {
-        label 'linux'
-    }
+    agent 'any'
     tools {
             maven 'Maven'
             jdk 'JDK11'
