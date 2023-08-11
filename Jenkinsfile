@@ -11,7 +11,7 @@ pipeline {
         stage('validate') {
             steps {
                 echo 'VALIDATE'
-                bat 'mvn clean validate'
+                sh 'mvn clean validate'
             }
         }
         stage('Compile') {
@@ -38,7 +38,7 @@ pipeline {
         stage('package') {
             steps {
                 echo 'Pakage'
-                bat 'mvn clean package'
+                sh 'mvn clean package'
             }
         }
         stage('Docker Build') {
@@ -47,7 +47,7 @@ pipeline {
             // }
             // stage('Build') {
                 steps {
-                    bat 'docker build -t abhi_patil/sportclub-backend:latest .'
+                    sh 'docker build -t abhi_patil/sportclub-backend:latest .'
                 }
             // steps {
             //     script {
@@ -57,7 +57,7 @@ pipeline {
         }
         stage('scan') {
             steps { 
-                bat 'trivy image abhi_patil/sportclub-backend:latest'
+                sh 'trivy image abhi_patil/sportclub-backend:latest'
             }
         }
 
