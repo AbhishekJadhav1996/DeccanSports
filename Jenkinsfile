@@ -1,5 +1,7 @@
 pipeline {
-     agent any
+    agent {
+        label 'linux'
+    }
     tools {
             maven 'Maven'
             jdk 'JDK11'
@@ -15,20 +17,24 @@ pipeline {
         stage('Compile') {
             steps {
                 echo 'COMPILE'
-                bat 'mvn clean compile'
+                sh 'mvn clean compile'
             }
         }
-
-        // stage('test') {
-        //     steps {
-        //         echo 'Test'
-        //         sh 'mvn clean test'
-        //     }
-        // }
-
-        // stage('Sonar Analysis') {
-        //     steps {
-        //         sh 'mvn clean install'
-        //         sh 'mvn sonar:sonar -Dsonar.token=cbf4cb8304fee53bde54f1d6a2273f35b5afe9fd'
-        //     }
-        // }
+      stage('package') {
+            steps {
+                echo 'Pakage'
+                sh 'mvn clean package'
+            }
+        }
+        stage('Docker Build') {
+                steps {
+                    sh 'docker build -t abhi_patil/sportclub-backend:latest .'
+                }
+        }
+        stage('scan') {
+            steps { 
+                sh 'trivy image abhi_patil/sportclub-backend:latest'
+            }
+        }
+    }
+}
